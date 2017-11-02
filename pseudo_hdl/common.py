@@ -22,13 +22,12 @@ def _find_module_by_hier_list(hw_module, hier_list):
     if not hw_module:
         raise ValueError('Can\'t find hw_module "{0}".'.format(
             hw_module_name))
-    for sub_module_name in hier_list:
-        sub_module = hw_module.module_dict.get(sub_module_name, None)
-        if sub_module:
-            hw_module = sub_module
-        else:
+    for hw_module_name in hier_list:
+        sub_module = hw_module.module_dict.get(hw_module_name, None)
+        if not sub_module:
             raise ValueError('Can\'t find hw_module "{0}".'.format(
-                sub_module_name))
+                hw_module_name))
+        hw_module = sub_module
     return hw_module
 
 
@@ -40,5 +39,4 @@ def mirror_signal(signal_path):
     signal = hw_module.signal_dict.get(signal_name, None)
     if signal is None:
         raise ValueError('Can\'t find signal "{0}".'.format(signal_name))
-    else:
-        return signal
+    return signal
