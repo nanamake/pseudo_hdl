@@ -48,19 +48,18 @@ class Signal:
         return self._negedge
 
     def _update(self):
-        if self._value != self._next:
-            if self._posedge and (not self._value) and self._next:
-                self._waiters += self._posedge._waiters
-                del self._posedge._waiters[:]
-            if self._negedge and self._value and (not self._next):
-                self._waiters += self._negedge._waiters
-                del self._negedge._waiters[:]
-            self._value = self._next
-            if self._vcd_id:
-                self._vcd_write()
-            return self._waiters
-        else:
+        if self._value == self._next:
             return []
+        if self._posedge and (not self._value) and self._next:
+            self._waiters += self._posedge._waiters
+            del self._posedge._waiters[:]
+        if self._negedge and self._value and (not self._next):
+            self._waiters += self._negedge._waiters
+            del self._negedge._waiters[:]
+        self._value = self._next
+        if self._vcd_id:
+            self._vcd_write()
+        return self._waiters
 
     def _vcd_write_bit(self):
         _vcd.write('{0}{1}\n'.format(int(self._value), self._vcd_id))
