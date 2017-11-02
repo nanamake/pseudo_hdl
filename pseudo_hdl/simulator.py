@@ -289,9 +289,10 @@ def simulate(hw_module):
 def _find_vcd_info(hw_module):
     if hw_module.vcd_info:
         return hw_module.vcd_info
-    else:
-        for sub_module in hw_module.module_dict.values():
-            return _find_vcd_info(sub_module)
+    for sub_module in hw_module.module_dict.values():
+        vcd_info = _find_vcd_info(sub_module)
+        if vcd_info:
+            return vcd_info
     return None
 
 
