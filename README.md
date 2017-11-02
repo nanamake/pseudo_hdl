@@ -8,6 +8,13 @@ Most of the idea of the simulator comes from Jan Decaluwe's MyHDL.
 How to write HDL
 ----------------
 
+Import classes and functions.
+
+```python
+from pseudo_hdl import Signal, Delay, Always, HwBlock, HwModule
+from pseudo_hdl import simulate, now, finish, vcd_dump
+```
+
 The following is an example of RTL model.
 
 ```python
