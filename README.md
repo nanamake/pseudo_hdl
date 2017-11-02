@@ -102,7 +102,7 @@ The result is as follows.
 VCD file is created for waveform viewing.
 The following is a partial diagram of the waveform.
 
-![waveform diagram](hdl_example.svg)
+<img src="hdl_example.svg" alt="waveform diagram">
 
 
 Classes and Functions
