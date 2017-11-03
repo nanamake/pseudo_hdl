@@ -117,15 +117,15 @@ def _exclude_vcd_module(hw_module):
 
 def include_vcd_path(hw_module_path):
     """
-    Set to dump signals under hw_module and submodules
-    specified by the path.
+    Set to dump signals under hw_module and submodules specified
+    by hierarchical path. Use slashes to separate names.
     """
     return _include_vcd_module(_find_module_from_path(hw_module_path))
 
 
 def exclude_vcd_path(hw_module_path):
     """
-    Set not to dump signals under hw_module and submodules
-    specified by the path.
+    Set not to dump signals under hw_module and submodules specified
+    by hierarchical path. Use slashes to separate names.
     """
     return _exclude_vcd_module(_find_module_from_path(hw_module_path))

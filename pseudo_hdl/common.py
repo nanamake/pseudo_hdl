@@ -32,7 +32,10 @@ def _find_module_by_hier_list(hw_module, hier_list):
 
 
 def mirror_signal(signal_path):
-    """Make a mirror signal of the signal specified by the path."""
+    """
+    Make a mirror signal of the signal specified by hierarchical path.
+    Use slashes to separate names.
+    """
     hier_list = signal_path.strip('/').split('/')
     signal_name = hier_list.pop()
     hw_module = _find_module_from_path('/'.join(hier_list))
