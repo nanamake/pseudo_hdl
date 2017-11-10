@@ -5,7 +5,7 @@ from inspect import currentframe
 def _find_outer_name(obj):
     outer_frame = currentframe().f_back.f_back
     for outer_name, outer_obj in outer_frame.f_locals.items():
-        if id(obj) == id(outer_obj):  # "==" may be overloaded
+        if obj is outer_obj:
             return outer_name
     return None
 
